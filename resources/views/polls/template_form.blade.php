@@ -46,8 +46,8 @@
 				$('#answers').append(html);	
 			});
 
-			// // Soumission 
-			// $(document).on('submit', 'form', function(e) {  
+			// // Soumission
+			// $(document).on('submit', 'form', function(e) {
 			// 	e.preventDefault();
 			// 	$.ajax({
 			// 		method: $(this).attr('method'),
@@ -60,28 +60,75 @@
 			// 	})
 			// 	.fail(function(data) {
 			// 		var obj = data.responseJSON;
-			// 		// Nettoyage préliminaire					
+			// 		// Nettoyage préliminaire
 			// 		for(var i = 0; i < answer_number + 1; ++i) {
 			// 			$('.help-block').eq(i).text('');
-			// 			$('.form-group').eq(i).removeClass('has-error');						
-			// 		} 
+			// 			$('.form-group').eq(i).removeClass('has-error');
+			// 		}
 			// 		// Balayage de l'objet
 			// 		$.each(data.responseJSON, function (key, value) {
 			// 			// Traitement des erreurs de la question
 			// 			if(key == 'question') {
 			// 				$('.help-block').eq(0).text(value);
-			// 				$('.form-group').eq(0).addClass('has-error');							
+			// 				$('.form-group').eq(0).addClass('has-error');
 			// 			}
 			// 			// Traitement des erreurs des réponses
 			// 			else {
 			// 				var i = parseInt(key.slice(-1)) + 1;
 			// 				var texte = value[0].replace(key, 'réponse');
 			// 				$('.help-block').eq(i).text(texte);
-			// 				$('.form-group').eq(i).addClass('has-error');							
+			// 				$('.form-group').eq(i).addClass('has-error');
 			// 			}
 			// 		});
 			// 	});
 			// });
+
+            // // Soumission
+            $(document).on('submit', 'form', function(e) {
+                e.preventDefault();
+                $.ajax({
+                    method: $(this).attr('method'),
+                    url: $(this).attr('action'),
+                    data: $(this).serialize(),
+                    dataType: "json"
+                })
+                    .done(function(data) {
+                        window.location.href = '{!! url('/') !!}';
+                    })
+                    .fail(function(data) {
+                        var obj = data.responseJSON;
+                        // Nettoyage préliminaire
+                        for(var i = 0; i < answer_number + 1; ++i) {
+                            $('.help-block').eq(i).text('');
+                            $('.form-group').eq(i).removeClass('has-error');
+                        }
+                        // Balayage de l'objet
+                        $.each(data.responseJSON, function (key, value) {
+                            // Traitement des erreurs de la question
+                            if(key == 'question') {
+                                $('.help-block').eq(0).text(value);
+                                $('.form-group').eq(0).addClass('has-error');
+                            }
+                            // Traitement des erreurs des réponses
+                            else {
+                                var i = parseInt(key.slice(-1)) + 1;
+                                var texte = value[0].replace(key, 'réponse');
+                                $('.help-block').eq(i).text(texte);
+                                $('.form-group').eq(i).addClass('has-error');
+                            }
+                        });
+                    });
+            });
+
+
+
+
+
+
+
+
+
+
 
 		})
 

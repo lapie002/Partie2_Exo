@@ -61,6 +61,7 @@ class PollController extends Controller
 	public function store(PollCreateRequest $request)
 	{
 		$this->pollRepository->store($request);
+
 		return response()->json();
 	}
 
