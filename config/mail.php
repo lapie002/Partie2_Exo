@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'moi@free.fr', 'name' => 'Administrateur'],
+    'from' => ['address' => 'lapierre.bruno@outlook.com', 'name' => 'Administrateur'],
 
     /*
     |--------------------------------------------------------------------------

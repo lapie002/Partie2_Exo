@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mon joli site</title>
+    <title>Audemobile</title>
     {!! Html::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css') !!}
     {!! Html::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css') !!}
     <!--[if lt IE 9]>
@@ -15,9 +15,9 @@
   <body>
     <header class="jumbotron">
       <div class="container">
-        <h1  class="page-header">{!! link_to('/', 'Le site des sondages !') !!}</h1>
+        <h1  class="page-header">{!! link_to('/', 'évaluation des compétences individuelles de mobilités !') !!}</h1>
         @if(auth()->check())
-          <div class="btn-group pull-right">          
+          <div class="btn-group pull-right">
             {!! link_to('logout', 'Deconnexion', ['class' => 'btn btn-info']) !!}
           </div>
         @else

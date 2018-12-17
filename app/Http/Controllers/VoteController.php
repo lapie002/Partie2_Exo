@@ -36,7 +36,7 @@ class VoteController extends Controller
 	public function create($id)
 	{
 		return view('polls.sondage', $this->pollRepository->getPollWithAnswers($id));
-	}	
+	}
 
 	/**
 	 * Traitement du formulaire de vote
@@ -46,10 +46,10 @@ class VoteController extends Controller
 	 * @return Redirect
 	 */
 	public function store(Request $request, $id)
-	{	
+	{
 		$this->pollRepository->saveVote($id, $request->input('options'), $request->user());
 
-		return redirect(route('poll.show', [$id]))->with('info', 'Merci d\'avoir participé à ce sondage !');
-	}	
+		return redirect(route('poll.show', [$id]))->with('info', 'Merci d\'avoir répondu à cette question  !');
+	}
 
 }

@@ -6,23 +6,23 @@
 
 		<!-- Informations en alertes -->
 		@if(auth()->guest())
-			<div class="alert alert-warning">Vous devez être connecté pour participer aux sondages !</div>
+			<div class="alert alert-warning">Vous devez être connecté pour participer au diagnostique !</div>
 		@elseif($done)
 			@if(session('info'))
 				<div class="alert alert-success">{{ session('info') }}</div>
 			@else
-				<div class="alert alert-warning">Vous avez déjà participé à ce sondage !</div>
+				<div class="alert alert-warning">Vous avez déjà répondu à cette question !</div>
 			@endif
 		@endif
 
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				{{ $poll->question }} 
+				{{ $poll->question }}
 				@if(auth()->check() && !$done)
-					{!! link_to('vote/' . $poll->id, 'Votez vous aussi !', ['class' => 'btn btn-info btn-xs pull-right']) !!}
+					{!! link_to('vote/' . $poll->id, 'Répondez vous aussi !', ['class' => 'btn btn-info btn-xs pull-right']) !!}
 				@endif
 			</div>
-			<div class="panel-body"> 
+			<div class="panel-body">
 				<p>Voici les résultats actuels :</p>
 
 					<!-- Balayage de toutes les réponses -->
@@ -36,11 +36,11 @@
 						  <div class="progress-bar progress-bar-success" style="width: {{ $pourcentage }}%;">
 						  	{{ $pourcentage }} %
 						  </div>
-						</div> 	
+						</div>
 					@endforeach
 					<!-- Fin du balayage -->
 
-			</div>	
+			</div>
 		</div>
 
 		@if(!session('info'))
@@ -48,8 +48,8 @@
 				<span class="glyphicon glyphicon-circle-arrow-left"></span> Retour
 			</a>
 		@else
-			{!! link_to('/', 'Retour à l\'accueil', ['class' => 'btn btn-primary']) !!}		
+			{!! link_to('/', 'Retour à l\'accueil', ['class' => 'btn btn-primary']) !!}
 		@endif
-		
+
 	</div>
 @stop

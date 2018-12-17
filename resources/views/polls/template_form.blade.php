@@ -3,9 +3,9 @@
 @section('contenu')
 	<div class="col-sm-offset-2 col-sm-8">
 		<br>
-		<div class="panel panel-primary">	
-			<div class="panel-heading">Création d'un sondage</div>
-			<div class="panel-body"> 
+		<div class="panel panel-primary">
+			<div class="panel-heading">Création d'une question</div>
+			<div class="panel-body">
 				<div class="col-sm-12">
 
 					<!-- Formulaire -->
@@ -19,20 +19,20 @@
 			<span class="glyphicon glyphicon-circle-arrow-left"></span> Retour
 		</a>
 	</div>
-@stop		
+@stop
 
 @section('scripts')
 	{!! Html::script('https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js') !!}
 	<script>
 
-		$(function(){		
+		$(function(){
 
 			// Nombre de réponses au départ
 			var answer_number = $('#answers .ligne').length;
 
 			// Suppression d'une ligne de réponse (utilisation de "on" pour gérer les boutons créés dynamiquement)
 			$(document).on('click', '.btn-danger', function(){
-				if($('#answers .ligne').length > 3)	$(this).parents('.ligne').remove();	
+				if($('#answers .ligne').length > 3)	$(this).parents('.ligne').remove();
 			});
 
 			// Ajout d'une ligne de réponse
@@ -43,7 +43,7 @@
 				+ '<small class="help-block"></small>\n'
 				+ '</div>\n<div class="col-md-2">\n<button type="button" class="btn btn-danger">Supprimer</button>\n</div>\n</div>\n';
 				++answer_number;
-				$('#answers').append(html);	
+				$('#answers').append(html);
 			});
 
 			// // Soumission
@@ -133,6 +133,4 @@
 		})
 
 	</script>
-@stop			
- 
-
+@stop
